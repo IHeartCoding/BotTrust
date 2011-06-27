@@ -1,0 +1,18 @@
+# CMake build definition
+CMakeLists.txt
+
+# CMake outputs
+CMakeFiles
+CMakeCache.txt
+Makefile
+*.cmake
+
+# Build output
+bin
+
+# Vim swap files
+*.swp
+
+# Backup files
+*.bak
+
