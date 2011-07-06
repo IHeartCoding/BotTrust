@@ -23,3 +23,20 @@ TEST(BotTrust, ReadOneStep) {
     EXPECT_EQ(2, steps[0].button);
 }
 
+TEST(BotTrust, ReadTwoSteps) {
+    std::string line("2 O 2 B 3");
+    std::stringstream stream(line);
+    std::vector<Step> steps;
+
+    read_steps(stream, steps);
+
+    EXPECT_EQ(2, steps.size());
+    if (steps.size() >= 2)
+    {
+        EXPECT_EQ(ORANGE, steps[0].robot);
+        EXPECT_EQ(2, steps[0].button);
+        EXPECT_EQ(BLUE, steps[1].robot);
+        EXPECT_EQ(3, steps[1].button);
+    }
+}
+

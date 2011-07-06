@@ -13,9 +13,11 @@ void read_steps(std::istream &in, std::vector<Step> &steps) {
     int num_steps;
     in >> num_steps;
 
-    Step step;
-    in >> step.robot;
-    in >> step.button;
-    steps.push_back(step);
+    for (int i = 0; i < num_steps; i++) {
+        Step step;
+        in >> step.robot;
+        in >> step.button;
+        steps.push_back(step);
+    }
 }
 
