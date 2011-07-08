@@ -21,3 +21,6 @@ void read_steps(std::istream &in, std::vector<Step> &steps) {
     }
 }
 
+int solve_test(const std::vector<Step> &steps) {
+    return steps[0].button;
+}

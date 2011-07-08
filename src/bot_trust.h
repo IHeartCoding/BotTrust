@@ -17,5 +17,7 @@ int read_num_tests(std::istream &in);
 
 void read_steps(std::istream &in, std::vector<Step> &steps);
 
+int solve_test(const std::vector<Step> &steps);
+
 #endif
 

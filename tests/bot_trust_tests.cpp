@@ -40,3 +40,16 @@ TEST(BotTrust, ReadTwoSteps) {
     }
 }
 
+/**
+ * Only ORANGE needs to move.
+ * Moving from 1 to 2 takes 1 seconds and then takes 1 second to push the button.
+ */
+TEST(BotTrust, SolveOneOrange) {
+    std::vector<Step> steps;
+    Step step1 = { ORANGE, 2 };
+    steps.push_back(step1);
+
+    EXPECT_EQ(2, solve_test(steps));
+}
+
+
