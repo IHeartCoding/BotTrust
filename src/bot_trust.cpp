@@ -22,5 +22,15 @@ void read_steps(std::istream &in, std::vector<Step> &steps) {
 }
 
 int solve_test(const std::vector<Step> &steps) {
-    return steps[0].button;
+    int num_seconds = 0;
+    int position = 1;
+
+    for (std::vector<Step>::const_iterator it = steps.begin(); it != steps.end(); ++it) {
+        Step step = *it;
+        num_seconds += step.button - position + 1; // + 1 to push the button.
+        position = step.button; // Move the robot to this position.
+    }
+
+    return num_seconds;
 }
+

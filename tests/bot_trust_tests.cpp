@@ -52,4 +52,18 @@ TEST(BotTrust, SolveOneOrange) {
     EXPECT_EQ(2, solve_test(steps));
 }
 
+/**
+ * Only ORANGE is moving so no concurrent move can happen.
+ * Moving from 1 to 2 takes 1 second and then takes 1 second to push the button.
+ * Moving from 2 to 4 takes 2 seconds and then takes 1 second to push the button.
+ */
+TEST(BotTrust, SolveTwoOrange) {
+    std::vector<Step> steps;
+    Step step1 = { ORANGE, 2 };
+    steps.push_back(step1);
+    Step step2 = { ORANGE, 4 };
+    steps.push_back(step2);
+
+    EXPECT_EQ(2 + 3, solve_test(steps));
+}
 
