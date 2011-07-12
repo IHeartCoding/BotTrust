@@ -1,4 +1,5 @@
 #include "bot_trust.h"
+#include <cmath>
 
 const char ORANGE = 'O';
 const char BLUE = 'B';
@@ -27,7 +28,7 @@ int solve_test(const std::vector<Step> &steps) {
 
     for (std::vector<Step>::const_iterator it = steps.begin(); it != steps.end(); ++it) {
         Step step = *it;
-        num_seconds += step.button - position + 1; // + 1 to push the button.
+        num_seconds += abs(step.button - position) + 1; // + 1 to push the button.
         position = step.button; // Move the robot to this position.
     }
 
