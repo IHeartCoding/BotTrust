@@ -24,12 +24,31 @@ void read_steps(std::istream &in, std::vector<Step> &steps) {
 
 int solve_test(const std::vector<Step> &steps) {
     int num_seconds = 0;
-    int position = 1;
+    int orange_position = 1;
+    int blue_position = 1;
+    char previous_robot = steps[0].robot;
 
     for (std::vector<Step>::const_iterator it = steps.begin(); it != steps.end(); ++it) {
         Step step = *it;
-        num_seconds += abs(step.button - position) + 1; // + 1 to push the button.
-        position = step.button; // Move the robot to this position.
+
+        int *position;
+        if (step.robot == BLUE)
+            position = &blue_position;
+        else
+            position = &orange_position;
+
+        int time = abs(step.button - *position) + 1; // + 1 to push the button
+        if (previous_robot == step.robot) {
+            num_seconds += time;
+        }
+        else {
+            num_seconds += 1;
+        }
+
+        // Move the robot to this position.
+        *position = step.button;
+
+        previous_robot = step.robot;
     }
 
     return num_seconds;
