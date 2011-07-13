@@ -98,3 +98,20 @@ TEST(BotTrust, SolveOrangeThenBlueWithShorterDistance) {
 
     EXPECT_EQ(4 + 1, solve_test(steps));
 }
+
+/**
+ * BLUE will move while ORANGE is moving but won't be able to complete his movement.
+ * ORANGE moves from 1 to 2 in 1 second and then takes 1 second to push the button.
+ * During this time, BLUE moves from 1 to 3, it then continues to 4 in 1 second and
+ * presses the button for an additionnal second.
+ */
+TEST(BotTrust, SolveOrangeThenBlueWithLongerDistance) {
+    std::vector<Step> steps;
+    Step step1 = { ORANGE, 2 };
+    steps.push_back(step1);
+    Step step2 = { BLUE, 4 };
+    steps.push_back(step2);
+
+    EXPECT_EQ(2 + 2, solve_test(steps));
+}
+
